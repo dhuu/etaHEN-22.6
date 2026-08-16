@@ -1,4 +1,4 @@
-﻿/* Copyright (C) 2025 etaHEN / LightningMods
+/* Copyright (C) 2025 etaHEN / LightningMods
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
@@ -465,6 +465,10 @@ void pause_resume_kstuff(KstuffPauseStatus opt, bool notify_user)
   case 0x10200000:
   case 0x10400000:
   case 0x10600000:
+  case 0x11000000:
+  case 0x11020000:
+  case 0x11500000:
+  case 0x12000000:
       sysentvec = KERNEL_ADDRESS_DATA_BASE + 0xdba6d8;
       sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xdba850;
     success = true;
