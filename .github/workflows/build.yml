@@ -24,6 +24,12 @@ jobs:
           wget https://github.com/ps5-payload-dev/sdk/releases/latest/download/ps5-payload-sdk.zip
           sudo unzip -d /opt ps5-payload-sdk.zip
 
+      - name: Prepare Assets
+        run: |
+          mkdir -p "Source Code/util/assets"
+          wget https://github.com/john-tornblom/ps5-payload-elfldr/releases/download/release/v0.11/Payload.zip
+          unzip -o Payload.zip elfldr.elf -d "Source Code/util/assets/"
+
       - name: Build etaHEN
         run: |
           export PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
