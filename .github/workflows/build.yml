@@ -38,7 +38,12 @@ jobs:
           export LLD=lld-18
           
           cd "Source Code"
-          mkdir -p build
+          mkdir -p build/shellui build/util
+          
+          # Create symlinks so .incbin can find assets inside build dir
+          ln -s "../../shellui/assets" "build/shellui/assets"
+          ln -s "../../util/assets" "build/util/assets"
+          
           cd build
           
           $PS5_PAYLOAD_SDK/bin/prospero-cmake ..
