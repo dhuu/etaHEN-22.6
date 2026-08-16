@@ -1,0 +1,31 @@
+name: Build etaHEN
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/john-tornblom/ps5-payload-sdk:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build etaHEN
+        run: |
+          cd "Source Code"
+          mkdir -p build
+          cd build
+          cmake ..
+          make -j$(nproc)
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: etaHEN-Build
+          path: Source Code/bin/*
