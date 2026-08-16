@@ -190,6 +190,9 @@ void *runDirectPKGInstaller(void *args) {
       const char* icon_url = json_getPropertyValue(my_json, "icon_url");
       if (icon_url) etaHEN_log("DPI: icon_url: %s", icon_url);
 
+      const char* filename = strrchr(url, '/');
+      const char* display_name = content_name ? content_name : (filename ? filename + 1 : url);
+
       MetaInfo arg1 = {.uri = url,
                        .ex_uri = ex_uri ? ex_uri : "",
                        .playgo_scenario_id = playgo_scenario_id ? playgo_scenario_id : "",
@@ -199,7 +202,7 @@ void *runDirectPKGInstaller(void *args) {
 
       int num = sceAppInstUtilInstallByPackage(&arg1, &pkg_info, &arg3);
       if (num == 0) {
-        notify(true, "DPI: Download and Install console Task initiated");
+        notify(true, "DPI: Task initiated for %s", display_name);
       } else {
         notify(true, "DPI: Install failed with error code %d", num);
       }
@@ -1201,14 +1204,17 @@ static enum MHD_Result dpiv2_on_request(void* cls, struct MHD_Connection* conn,
             arg1.uri = url_value;
             applyMetaInfo();
 
+            const char* filename = strrchr(url_value, '/');
+            const char* display_name = (arg1.content_name && strcmp(arg1.content_name, "etaHEN DPIv2") != 0) ? arg1.content_name : (filename ? filename + 1 : url_value);
+
             install_result = sceAppInstUtilInstallByPackage(&arg1, &pkg_info, &arg3);
 
             if (install_result == 0) {
                 snprintf(response_buffer, sizeof(response_buffer),
-                    "SUCCESS: Direct install console Task started for URL: %s",
-                    url_value);
+                    "SUCCESS: Direct install console Task started for: %s",
+                    display_name);
                 notify(true, "DPI: Direct install console Task started for %s",
-                    url_value);
+                    display_name);
             }
             else {
                 std::string error_message =
