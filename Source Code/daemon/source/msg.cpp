@@ -235,6 +235,10 @@ bool pause_resume_kstuff()
   case 0x10200000:
   case 0x10400000:
   case 0x10600000:
+  case 0x11000000:
+  case 0x11020000:
+  case 0x11500000:
+  case 0x12000000:
       sysentvec = KERNEL_ADDRESS_DATA_BASE + 0xdba6d8;
       sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xdba850;
     break;
@@ -397,7 +401,7 @@ void LoadSettings() {
       ini_parser_get(&parser, "Settings.PS5Debug", "0");
     const char * start_option =
       ini_parser_get(&parser, "Settings.StartOption", "0");
-    const char * DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "0");
+    const char * DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "1");
     const char * auto_eject_disc =
       ini_parser_get(&parser, "Settings.auto_eject_disc", "0");
     const char* fan_threshold =
