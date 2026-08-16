@@ -1,4 +1,4 @@
-﻿/* Copyright (C) 2025 etaHEN / LightningMods
+/* Copyright (C) 2025 etaHEN / LightningMods
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the
@@ -557,7 +557,7 @@ bool LoadSettings()
 
     const char *FTP_str = ini_parser_get(&parser, "Settings.FTP", "1");
     const char *Klog_str = ini_parser_get(&parser, "Settings.Klog", "0");
-    const char *DPI_str = ini_parser_get(&parser, "Settings.DPI", "0");
+    const char *DPI_str = ini_parser_get(&parser, "Settings.DPI", "1");
     const char *libhijacker_cheats_str = ini_parser_get(&parser, "Settings.libhijacker_cheats", "0");
     const char *PS5Debug_str = ini_parser_get(&parser, "Settings.PS5Debug", "0");
     const char *launch_itemzflow_str = ini_parser_get(&parser, "Settings.launch_itemzflow", "0");
@@ -570,7 +570,7 @@ bool LoadSettings()
     const char *util_rest_kill = ini_parser_get(&parser, "Settings.Util_rest_kill", "0");
     const char *game_rest_kill = ini_parser_get(&parser, "Settings.Game_rest_kill", "0");
     const char *toolbox_auto_start = ini_parser_get(&parser, "Settings.toolbox_auto_start", "1");
-    const char *DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "0");
+    const char *DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "1");
     const char *disable_toolbox_auto_start_for_rest_mode = ini_parser_get(&parser, "Settings.disable_toolbox_auto_start_for_rest_mode", "0");
     const char *dip_tid = ini_parser_get(&parser, "Settings.Display_tids", "0");
     const char *jb_debug_msg_str = ini_parser_get(&parser, "Settings.APP_JB_Debug_Msg", "0");
