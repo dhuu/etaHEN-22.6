@@ -131,12 +131,12 @@ void LoadSettings(void) {
 
         if (ini_parser_load(&parser, "/data/etaHEN/config.ini")) {
             const char* FTP_str = ini_parser_get(&parser, "Settings.FTP", "1");
-            const char* DPI_str = ini_parser_get(&parser, "Settings.DPI", "0");
+            const char* DPI_str = ini_parser_get(&parser, "Settings.DPI", "1");
             const char* discord_rpc_str = ini_parser_get(&parser, "Settings.discord_rpc", "0");
             const char* allow_data_n_sandbox = ini_parser_get(&parser, "Settings.Allow_data_in_sandbox", "1");
             const char* ftp_dev_access = ini_parser_get(&parser, "Settings.ALLOW_FTP_DEV_ACCESS", "0");
             const char* lite_mode = ini_parser_get(&parser, "Settings.LiteMode", "0");
-            const char* DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "0");
+            const char* DPI_v2 = ini_parser_get(&parser, "Settings.DPI_v2", "1");
             const char* Klog_str = ini_parser_get(&parser, "Settings.Klog", "0");
             const char* toolbox_for_rest = ini_parser_get(&parser, "Settings.disable_toolbox_auto_start_for_rest_mode", "0");\
 				const char* legacy_cmd_server_str = ini_parser_get(&parser, "Settings.legacy_cmd_server", "0");
@@ -198,7 +198,7 @@ int main(void) {
     global_conf.discord_rpc = false;
     global_conf.has_ftp_dev = false;
     global_conf.toolbox_auto_start = true;
-    global_conf.DPI_v2 = false;
+    global_conf.DPI_v2 = true;
     global_conf.klog = true;
 	global_conf.legacy_cmd_server_exit = false;
 
